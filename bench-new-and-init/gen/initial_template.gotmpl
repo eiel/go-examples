@@ -9,7 +9,7 @@ import (
 
 type Value{{ $n }} struct {
      {{ range $v := Items $n }}v{{ $v }} int64
-{{ end }}	
+{{ end }}
 }
 
 func NewValue{{ $n }}Entity() Value{{ $n }} {

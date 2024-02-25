@@ -26,7 +26,6 @@ func main() {
 	// Templateの名前をファイル名と一致させる必要がある。が、違うディレクトリにある場合ParseFilesはディレクトリ名を含める必要がある
 	name := "initial_template.gotmpl"
 	t, err := template.New(name).Funcs(funcs).ParseFiles(fmt.Sprintf("gen/%s", name))
-	t.Funcs(funcs)
 	if err != nil {
 		panic(err)
 	}
