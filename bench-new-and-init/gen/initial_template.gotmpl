@@ -45,9 +45,11 @@ func (v *Value{{ $n }})InitRef() {
 
 func Benchmark_値返し_______________メンバ数{{ $n }}(b *testing.B) {
 	var v Value{{ $n }}
+	b.ResetTimer()
 	for i := 0; i <b.N; i++ {
 		v = NewValue{{ $n }}Entity()
 	}
+	b.StopTimer()
 	if v.v{{ $n }} != {{ $n }} {
 		b.Errorf("v{{ $n }} is not {{ $n }}")
 	}
@@ -55,9 +57,11 @@ func Benchmark_値返し_______________メンバ数{{ $n }}(b *testing.B) {
 
 func Benchmark_値返しメソッド_______メンバ数{{ $n }}(b *testing.B) {
         var v Value{{ $n }}
+	b.ResetTimer()
 	for i := 0; i <b.N; i++ {
 		v = v.Init()
 	}
+	b.StopTimer()
 	if v.v{{ $n }} != {{ $n }} {
 		b.Errorf("v{{ $n }} is not {{ $n }}")
 	}
@@ -65,9 +69,11 @@ func Benchmark_値返しメソッド_______メンバ数{{ $n }}(b *testing.B) {
 
 func Benchmark_ポインタ返し_________メンバ数{{ $n }}(b *testing.B) {
 	var v *Value{{ $n }}
+	b.ResetTimer()
 	for i := 0; i <b.N; i++ {
 		v = NewValue{{ $n }}Ref()
 	}
+	b.StopTimer()
 	if v.v{{ $n }} != {{ $n }} {
 		b.Errorf("v{{ $n }} is not {{ $n }}")
 	}
@@ -76,10 +82,12 @@ func Benchmark_ポインタ返し_________メンバ数{{ $n }}(b *testing.B) {
 
 func Benchmark_ポインタ渡し_________メンバ数{{ $n }}(b *testing.B) {
 	var v Value{{ $n }}
+	b.ResetTimer()
 	for i := 0; i <b.N; i++ {
 	        v = Value{{ $n }}{}
 		InitValue{{ $n }}(&v)
 	}
+	b.StopTimer()
 	if v.v{{ $n }} != {{ $n }} {
 		b.Errorf("v{{ $n }} is not {{ $n }}")
 	}
@@ -87,10 +95,12 @@ func Benchmark_ポインタ渡し_________メンバ数{{ $n }}(b *testing.B) {
 
 func Benchmark_ポインタ渡しメソッド_メンバ数{{ $n }}(b *testing.B) {
      	var v Value{{ $n }}
+	b.ResetTimer()
 	for i := 0; i <b.N; i++ {
 	        v = Value{{ $n }}{}
 		(&v).InitRef()
 	}
+	b.StopTimer()
 	if v.v{{ $n }} != {{ $n }} {
 		b.Errorf("v{{ $n }} is not {{ $n }}")
 	}
